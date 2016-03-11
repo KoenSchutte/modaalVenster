@@ -8,11 +8,13 @@ var modaalVenObj = (function() {
     $Venster.append($Inhoud);
     
     return {
+        //Centreren van de inhoud
         centreren: function() {
             var left = Math.max($window.width()-$Inhoud.outerWidth(), 0) / 2;
             var up = Math.max($window.height()-$Inhoud.outerHeight(), 0) / 2;
             $Inhoud.css({links: left, top: up});
         },
+        //Het openen van de inhoud
         openen: function(instellingen) {
             $Inhoud.append($sluit, instellingen.stof);
             $Inhoud.css({width: instellingen.breedte+'px' || 'auto',
@@ -21,6 +23,7 @@ var modaalVenObj = (function() {
             modaalVenObj.centreren();
             $sluit.on('click', modaalVenObj.sluiten);
         },
+        //Het sluiten van de inhoud/venster
         sluiten: function() {
             $Inhoud.empty().off('click', modaalVenObj.sluiten);
             $Venster.detach();
